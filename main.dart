@@ -15,9 +15,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: //TODO : add first page < home: WidgetName >
-
-      // MyHomePage(title: 'Tabtivity'),
+      home: MyHomePage(
+          title: 'Tabtivity'), //TODO : add first page < home: WidgetName >
     );
   }
 }
@@ -33,7 +32,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Container(
+      height: 100,
+      color: Colors.red,
+    );
   }
 }
