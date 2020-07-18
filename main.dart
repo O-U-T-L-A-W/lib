@@ -1,4 +1,6 @@
+import 'package:explore/controller/sqlLib.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'model/nitishTestPage.dart';
 import 'model/priyanshuTestPage.dart';
 
@@ -35,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Container(
       height: 100,
       color: Colors.red,
+      child: Center(child: SaveButtonAddActivity()),
     );
   }
 }
