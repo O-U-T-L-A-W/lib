@@ -24,7 +24,7 @@ String withinTwoDays() {
   }
 
   String currentday = (year + "-" + month + "-" + day + "%");
-  print(currentday);
+  //print(currentday);
 
   dateTime = dateTime.subtract(Duration(days: 1));
   day = dateTime.day.toString();
@@ -39,10 +39,10 @@ String withinTwoDays() {
   }
 
   String previousday = (year + "-" + month + "-" + day + "%");
-  print(previousday);
+  // print(previousday);
 
   String query =
       "`timestamp` LIKE $currentday"; //OR `timestamp` LIKE $previousday";
-  print(query);
+  // print(query);
   return currentday;
 }

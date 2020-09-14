@@ -24,8 +24,7 @@ class _DistinctActivitiesAreaState extends State<DistinctActivitiesArea> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 400,
+    return Expanded(
       child: ListView(
         children: <Widget>[
           FutureBuilder(

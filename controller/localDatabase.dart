@@ -52,11 +52,9 @@ Future<List<Activity>> getAllActivityFromLocalDatabase() async {
   // db.close();
   List<Activity> temp = (List.generate(
       a.length,
-      (index) => Activity(
-          a[index]['name'], DateTime.parse(a[index]['timestamp']),
-          duration: a[index]['duration'] == null
-              ? null
-              : parseDuration(a[index]['duration']))));
+      (index) => Activity(a[index]['name'], (a[index]['timestamp']),
+          duration:
+              a[index]['duration'] == null ? null : (a[index]['duration']))));
   print(temp);
   return (temp);
 }
@@ -64,17 +62,3 @@ Future<List<Activity>> getAllActivityFromLocalDatabase() async {
 // add an extra filed which will containg the duration of activity
 // i.e the time of last activity which can be calculated by getting difference form
 // last shared prefernce timestamp and current time
-Duration parseDuration(String s) {
-  int hours = 0;
-  int minutes = 0;
-  int micros;
-  List<String> parts = s.split(':');
-  if (parts.length > 2) {
-    hours = int.parse(parts[parts.length - 3]);
-  }
-  if (parts.length > 1) {
-    minutes = int.parse(parts[parts.length - 2]);
-  }
-  micros = (double.parse(parts[parts.length - 1]) * 1000000).round();
-  return Duration(hours: hours, minutes: minutes, microseconds: micros);
-}

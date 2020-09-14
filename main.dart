@@ -1,6 +1,8 @@
 import 'package:explore/controller/Database/getTwoDayDetails.dart';
 import 'package:explore/model/dataFromDB.dart';
 import 'package:explore/widgets/activityDistinct.dart';
+import 'package:explore/widgets/drawer/currentDaySummary.dart';
+import 'package:explore/widgets/homePageWidgets/homePageClock.dart';
 import 'package:explore/widgets/saveButtonAddActivity.dart';
 import 'package:explore/widgets/showActivites.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +19,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Explore',
       initialRoute: '/',
-      routes: {'/showActivitiesPage': (context) => ShowActivities()},
+      routes: {
+        '/showActivitiesPage': (context) => ShowActivities(),
+        '/CurrentDaySummary': (context) => CurrentDaySummary(),
+      },
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -48,24 +53,43 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          child: Column(
-            children: <Widget>[
-              //  CurrentActivityPage(),
-              RaisedButton(
-                  child: Text("Show Activities"),
-                  onPressed: () =>
-                      Navigator.pushNamed(context, '/showActivitiesPage')),
-              ActivityStopWatch(),
-              DistinctActivitiesArea(),
-            ],
+          child: Expanded(
+            child: Column(
+              children: <Widget>[
+                HomePageClock(),
+                //Todays Time and date
+                //Current working activity
+                //Stopwatch for the activity
+                //List of activities top 6
+
+                //  CurrentActivityPage(),
+                RaisedButton(
+                    child: Text("Show Activities"),
+                    onPressed: () =>
+                        Navigator.pushNamed(context, '/showActivitiesPage')),
+                ActivityStopWatch(),
+                DistinctActivitiesArea(),
+              ],
+            ),
           ),
         ),
       ),
       appBar: AppBar(
-        //TODO: change icon
-        leading: IconButton(
-          onPressed: () => getTwoDayDetails(),
-          icon: Icon(Icons.add),
+          //TODO: change icon
+
+          ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(child: Text("Drawer Header")),
+            ListTile(
+                title: Text("Today's Summary"),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, '/CurrentDaySummary');
+                })
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
